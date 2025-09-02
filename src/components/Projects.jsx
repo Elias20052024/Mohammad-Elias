@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 import { DiJavascript1, DiReact, DiNodejs, DiMongodb, DiCss3 } from 'react-icons/di';
 import { SiTailwindcss, SiExpress } from 'react-icons/si';
+import shoppingListImg from '../assets/Projects images/ShoppingList.png';
+import tracalorieImg from '../assets/Projects images/Tracalorie.png';
+import pandaStreamImg from '../assets/Projects images/PandaStream.png';
+import randomIdeasImg from '../assets/Projects images/randomideas.png';
 
 const getTechStack = (project) => {
   switch(project.name) {
@@ -39,28 +43,28 @@ const projects = [
     description: "A vanilla JavaScript shopping list application",
     language: "JavaScript",
     demoLink: "https://shoppinglist2025.netlify.app/",
-    image: "/public/assets/Projects images/ShoppingList.png"
+    image: shoppingListImg
   },
   {
     name: "Tracalorie",
     description: "Calorie tracking application",
     language: "JavaScript",
     demoLink: "https://tracaloriespro.netlify.app/",
-    image: "/public/assets/Projects images/Tracalorie.png"
+    image: tracalorieImg
   },
   {
     name: "Panda Stream",
     description: "Streaming application",
     language: "JavaScript",
     demoLink: "https://pandastream.netlify.app/",
-    image: "/public/assets/Projects images/PandaStream.png"
+    image: pandaStreamImg
   },
   {
     name: "Random Ideas",
     description: "Random ideas generator application",
     language: "JavaScript",
     demoLink: "https://5000-i657i4n44dbviyioow2nq-8d3c0b74.manus.computer/",
-    image: "/public/assets/Projects images/randomideas.png"
+    image: randomIdeasImg
   }
 ];
 
