@@ -83,7 +83,7 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-sm"
           >
-            © 2024 Mohammad Elias. All rights reserved. Built with React & Tailwind CSS.
+            © 2025 Mohammad Elias. All rights reserved. 
           </motion.p>
         </div>
       </footer>

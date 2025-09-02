@@ -33,6 +33,28 @@ const About = ({ darkMode }) => {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center"
+            >
+              <div className="relative group">
+                <img
+                  src="/assets/images/profile photo.jpg"
+                  alt="Profile"
+                  className="w-64 h-64 md:w-72 md:h-72 rounded-2xl shadow-xl border-4 border-blue-500 hover:scale-105 transition-transform duration-300 object-cover"
+                />
+                <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t ${
+                  darkMode ? 'from-gray-900' : 'from-white'
+                } to-transparent rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                  <p className={`text-sm text-center ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    Shot on vivo X60 Pro | ZEISS
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -72,46 +94,66 @@ const About = ({ darkMode }) => {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h3 className={`text-2xl font-semibold mb-8 ${
-                darkMode ? 'text-white' : 'text-gray-800'
-              }`}>
-                Technical Skills
-              </h3>
-              <div className="space-y-6">
-                {skills.map((skill, index) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className={`font-medium ${
-                        darkMode ? 'text-gray-300' : 'text-gray-700'
-                      }`}>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-24 max-w-5xl mx-auto"
+          >
+            <h3 className={`text-4xl font-bold text-center mb-16 ${
+              darkMode ? 'text-white' : 'text-gray-800'
+            }`}>
+              Technical Skills
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+                  className={`group relative overflow-hidden ${
+                    darkMode ? 'bg-gray-800' : 'bg-white'
+                  } rounded-xl p-6 shadow-lg border border-transparent hover:border-blue-500 transition-all duration-300`}
+                >
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className={`font-bold text-xl ${
+                        darkMode ? 'text-white' : 'text-gray-800'
+                      } group-hover:text-blue-500 transition-colors duration-300`}>
                         {skill.name}
                       </span>
-                      <span className={`text-sm ${
-                        darkMode ? 'text-gray-400' : 'text-gray-500'
-                      }`}>
+                      <span className={`text-lg font-semibold ${
+                        darkMode ? 'text-blue-400' : 'text-blue-600'
+                      } group-hover:scale-110 transition-transform duration-300`}>
                         {skill.level}%
                       </span>
                     </div>
-                    <div className={`w-full h-3 rounded-full ${
-                      darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                    }`}>
+                    <div className={`w-full h-4 rounded-full ${
+                      darkMode ? 'bg-gray-700' : 'bg-gray-100'
+                    } overflow-hidden`}>
                       <motion.div
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.6 + index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
-                      />
+                        transition={{ duration: 1.5, delay: 0.6 + index * 0.1 }}
+                        className={`h-full rounded-full relative group-hover:scale-105 transition-transform duration-300
+                          ${skill.level >= 80 ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500' :
+                            skill.level >= 50 ? 'bg-gradient-to-r from-blue-500 to-purple-500' :
+                            'bg-gradient-to-r from-blue-400 to-blue-600'}`}
+                      >
+                        <div className="absolute inset-0 bg-white opacity-20 animate-pulse"></div>
+                      </motion.div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 ${
+                    darkMode ? 'bg-blue-400' : 'bg-blue-600'
+                  } rounded-xl blur-2xl`}></div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

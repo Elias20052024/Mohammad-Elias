@@ -171,7 +171,7 @@ const Certifications = ({ darkMode }) => {
               { number: '6+', label: 'Certifications' },
               { number: '3+', label: 'Platforms' },
               { number: '100+', label: 'Hours of Learning' },
-              { number: '2024', label: 'Latest Cert' }
+              { number: '2025', label: 'Latest Cert' }
             ].map((stat, index) => (
               <div key={stat.label} className="text-center">
                 <motion.div

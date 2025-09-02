@@ -115,7 +115,7 @@ const Hero = ({ darkMode }) => {
                 <FiGithub size={24} />
               </a>
               <a
-                href="https://linkedin.com/in/mohammad-elias-b1985232b"
+                href="https://www.linkedin.com/in/mohammad-elias-dabbas-b1985232b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-3 rounded-full border-2 transition-all duration-300 hover:scale-110 ${
