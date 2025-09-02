@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import logo from '../assets/logo.svg';
+import logo2 from '../assets/logo 2.svg';
 
 const Navigation = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +93,7 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
             className="flex items-center gap-2"
           >
             <img 
-              src={logo} 
+              src={darkMode ? logo2 : logo} 
               alt="Mohammad Elias Logo" 
               className="h-20 w-auto"
             />
