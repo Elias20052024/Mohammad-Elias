@@ -28,7 +28,7 @@ const Education = ({ darkMode }) => {
   ];
 
   return (
-    <section id="education" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <section id="education" className={`py-20 ${darkMode ? 'bg-pattern-dark' : 'bg-pattern-light'}`}>
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}

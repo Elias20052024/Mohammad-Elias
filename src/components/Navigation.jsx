@@ -25,12 +25,51 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
     { name: 'Contact', href: '#contact' }
   ];
 
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      
+      // Find the current active section
+      const sections = navItems.map(item => item.href.substring(1));
+      let currentSection = sections[0];
+      
+      sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100) { // Adjusted threshold for better UX
+            currentSection = section;
+          }
+        }
+      });
+      
+      setActiveSection(currentSection);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [navItems]);
+
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Close mobile menu first
     setIsOpen(false);
+    
+    // Small delay to allow mobile menu to close
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const headerOffset = 80; // Height of your fixed header
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -70,11 +109,27 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className={`transition-colors duration-200 hover:text-blue-500 ${
-                  darkMode ? 'text-gray-300' : 'text-gray-600'
+                className={`relative transition-colors duration-200 hover:text-blue-500 ${
+                  activeSection === item.href.substring(1)
+                    ? darkMode 
+                      ? 'text-blue-400'
+                      : 'text-blue-600'
+                    : darkMode 
+                      ? 'text-gray-300'
+                      : 'text-gray-600'
                 }`}
               >
                 {item.name}
+                {activeSection === item.href.substring(1) && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className={`absolute -bottom-1 left-0 right-0 h-0.5 ${
+                      darkMode ? 'bg-blue-400' : 'bg-blue-600'
+                    }`}
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
               </button>
             ))}
             
@@ -116,21 +171,48 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
         {/* Mobile Navigation */}
         <motion.div
           initial={false}
-          animate={{ height: isOpen ? 'auto' : 0 }}
-          className="md:hidden overflow-hidden"
+          animate={{ 
+            height: isOpen ? 'auto' : 0,
+            opacity: isOpen ? 1 : 0
+          }}
+          transition={{
+            height: { duration: 0.3 },
+            opacity: { duration: 0.2 }
+          }}
+          className={`md:hidden overflow-hidden fixed left-0 right-0 ${
+            darkMode ? 'bg-gray-900/95' : 'bg-white/95'
+          } backdrop-blur-md`}
         >
-          <div className={`py-4 space-y-4 ${
+          <div className={`py-4 space-y-1 ${
             darkMode ? 'border-t border-gray-800' : 'border-t border-gray-200'
           }`}>
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className={`block w-full text-left py-2 transition-colors duration-200 hover:text-blue-500 ${
-                  darkMode ? 'text-gray-300' : 'text-gray-600'
+                className={`block w-full text-left py-3 px-6 transition-all duration-200 hover:text-blue-500 relative ${
+                  activeSection === item.href.substring(1)
+                    ? darkMode 
+                      ? 'text-blue-400 bg-blue-900/20'
+                      : 'text-blue-600 bg-blue-50'
+                    : darkMode 
+                      ? 'text-gray-300'
+                      : 'text-gray-600'
                 }`}
               >
-                {item.name}
+                <div className="flex items-center">
+                  {activeSection === item.href.substring(1) && (
+                    <motion.div
+                      layoutId="activeMobileSection"
+                      className={`absolute left-0 top-0 bottom-0 w-1 ${
+                        darkMode ? 'bg-blue-400' : 'bg-blue-600'
+                      }`}
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.name}</span>
+                </div>
               </button>
             ))}
           </div>

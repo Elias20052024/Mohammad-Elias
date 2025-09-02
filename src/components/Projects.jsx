@@ -39,11 +39,11 @@ const getTechStack = (project) => {
 
 const projects = [
   {
-    name: "ShoppingList",
-    description: "A vanilla JavaScript shopping list application",
+    name: "Panda Stream",
+    description: "Streaming application",
     language: "JavaScript",
-    demoLink: "https://shoppinglist2025.netlify.app/",
-    image: shoppingListImg
+    demoLink: "https://pandastream.netlify.app/",
+    image: pandaStreamImg
   },
   {
     name: "Tracalorie",
@@ -53,11 +53,11 @@ const projects = [
     image: tracalorieImg
   },
   {
-    name: "Panda Stream",
-    description: "Streaming application",
+    name: "ShoppingList",
+    description: "A vanilla JavaScript shopping list application",
     language: "JavaScript",
-    demoLink: "https://pandastream.netlify.app/",
-    image: pandaStreamImg
+    demoLink: "https://shoppinglist2025.netlify.app/",
+    image: shoppingListImg
   },
   {
     name: "Random Ideas",
@@ -70,7 +70,7 @@ const projects = [
 
 const Projects = ({ darkMode }) => {
   return (
-    <section id="projects" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+    <section id="projects" className={`py-20 ${darkMode ? 'bg-pattern-dark' : 'bg-pattern-light'}`}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

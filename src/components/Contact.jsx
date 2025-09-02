@@ -40,7 +40,7 @@ const Contact = ({ darkMode }) => {
       });
   };
   return (
-    <section id="contact" className={`py-20 relative overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+    <section id="contact" className={`py-20 relative overflow-hidden ${darkMode ? 'bg-pattern-dark' : 'bg-pattern-light'}`}>
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className={`absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-20 ${
