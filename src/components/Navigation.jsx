@@ -49,11 +49,18 @@ const Navigation = ({ darkMode, toggleDarkMode }) => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className={`text-xl font-bold ${
-              darkMode ? 'text-white' : 'text-gray-800'
-            }`}
+            className="flex items-center gap-2"
           >
-            Mohammad Elias
+            <img 
+              src="/src/assets/logo.svg" 
+              alt="Mohammad Elias Logo" 
+              className="h-20 w-auto"
+            />
+            <span className={`text-xl font-bold ${
+              darkMode ? 'text-white' : 'text-gray-800'
+            }`}>
+              
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}

@@ -103,7 +103,7 @@ const Hero = ({ darkMode }) => {
             
             <div className="flex gap-4">
               <a
-                href="https://github.com/Mohammad-Elias"
+                href="https://github.com/Elias20052024"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-3 rounded-full border-2 transition-all duration-300 hover:scale-110 ${
