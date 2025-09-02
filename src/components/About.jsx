@@ -48,7 +48,7 @@ const About = ({ darkMode }) => {
                   darkMode ? 'from-gray-900' : 'from-white'
                 } to-transparent rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
                   <p className={`text-sm text-center ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Shot on vivo X60 Pro | ZEISS
+                    
                   </p>
                 </div>
               </div>
