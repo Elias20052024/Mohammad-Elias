@@ -132,34 +132,53 @@ const Skills = ({ darkMode }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-16 text-center"
+            className="mt-20"
           >
-            <h3 className={`text-2xl font-semibold mb-8 ${
+            <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 ${
               darkMode ? 'text-white' : 'text-gray-800'
             }`}>
               Languages
-            </h3>
-            <div className="flex justify-center gap-8">
-              <div className={`px-6 py-3 rounded-lg ${
-                darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-gray-100 border border-gray-200'
-              }`}>
-                <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+            </h2>
+            <div className="flex justify-center gap-6">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className={`px-8 py-6 rounded-2xl backdrop-blur-sm ${
+                  darkMode 
+                    ? 'bg-gray-800/50 hover:bg-gray-800/70' 
+                    : 'bg-gray-50 hover:bg-gray-100/80'
+                } transition-all duration-300`}
+              >
+                <h3 className={`text-2xl font-bold mb-2 ${
+                  darkMode ? 'text-white' : 'text-gray-800'
+                }`}>
                   English
-                </h4>
-                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                </h3>
+                <p className={`text-lg ${
+                  darkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}>
                   Fluent
                 </p>
-              </div>
-              <div className={`px-6 py-3 rounded-lg ${
-                darkMode ? 'bg-gray-900 border border-gray-700' : 'bg-gray-100 border border-gray-200'
-              }`}>
-                <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className={`px-8 py-6 rounded-2xl backdrop-blur-sm ${
+                  darkMode 
+                    ? 'bg-gray-800/50 hover:bg-gray-800/70' 
+                    : 'bg-gray-50 hover:bg-gray-100/80'
+                } transition-all duration-300`}
+              >
+                <h3 className={`text-2xl font-bold mb-2 ${
+                  darkMode ? 'text-white' : 'text-gray-800'
+                }`}>
                   Arabic
-                </h4>
-                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                </h3>
+                <p className={`text-lg ${
+                  darkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}>
                   Native
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>
