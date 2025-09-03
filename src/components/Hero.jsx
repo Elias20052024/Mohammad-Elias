@@ -65,8 +65,8 @@ const Hero = ({ darkMode }) => {
               strings={[
                 'Software Engineering Student',
                 'Aspiring Software Developer',
-                'IT Support Specialist',
-                'Problem Solver'
+                'Passionate About Programming',
+                'Building User-Centric Applications'
               ]}
               typeSpeed={50}
               backSpeed={30}
